@@ -20,4 +20,8 @@ public class CountryService {
     public void save(Country country){
         countryRepository.save(country);
     }
+
+    public Country findById(Integer id){
+        return countryRepository.findById(id).get();
+    }
 }

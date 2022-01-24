@@ -418,6 +418,12 @@
                           <td th:text="${country.description}"></td>
                           <td th:text="${country.capital}"></td>
                           <td th:text="${country.code}"></td>
+                          <td>
+                              <div class="btn-group">
+                                  <a th:href="@{/countries/findById/(id=${country.id})}" class="btn btn-primary" id="editButton">Edit</a>
+                              </div>
+
+                          </td>
                       </tr>
                       </tbody>
                   </table>
@@ -484,6 +490,53 @@
       </div>
   </div>
 
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="editModalLabel">Update Country</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form th:action="@{/countries/update}" method="put">
+
+                      <div class="form-group">
+                          <label for="recipient-desc" class="col-form-label">Description:</label>
+                          <input type="text" class="form-control" id="editId" name="id" readonly>
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-desc" class="col-form-label">Description:</label>
+                          <input type="text" class="form-control" id="editDescription" name="description">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-cap" class="col-form-label">Capital:</label>
+                          <input type="text" class="form-control" id="editCapital" name="capital">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-cod" class="col-form-label">Code:</label>
+                          <input type="text" class="form-control" id="editCode" name="code">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-con" class="col-form-label">Continent:</label>
+                          <input type="text" class="form-control" id="editContinent" name="continent">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-nat" class="col-form-label">Nationality:</label>
+                          <input type="text" class="form-control" id="editNationality" name="nationality">
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
   <!-- javascripts -->
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -492,6 +545,7 @@
   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
   <!--custome script for all page-->
   <script src="js/scripts.js"></script>
+  <script src="js/country.js"></script>
 
 
 </body>
