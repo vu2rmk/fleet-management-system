@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -400,7 +400,30 @@
           </div>
         </div>
         <!-- page start-->
-        <h1>List of Countries</h1>
+          <div class="row">
+              <div class="col-lg-12">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">New Country</button>
+                  <table class="table">
+                      <thead>
+                      <tr>
+                          <th>id</th>
+                          <th>Description</th>
+                          <th>Capital</th>
+                          <th>Code</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr th:each="country:${countries}">
+                          <td th:text="${country.id}"></td>
+                          <td th:text="${country.description}"></td>
+                          <td th:text="${country.capital}"></td>
+                          <td th:text="${country.code}"></td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
         <!-- page end-->
       </section>
     </section>
@@ -418,6 +441,49 @@
     </div>
   </section>
   <!-- container section end -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form th:action="@{/countries/addNew}" method="post">
+                      <div class="form-group">
+                          <label for="recipient-desc" class="col-form-label">Description:</label>
+                          <input type="text" class="form-control" id="recipient-desc" name="description">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-cap" class="col-form-label">Capital:</label>
+                          <input type="text" class="form-control" id="recipient-cap" name="capital">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-cod" class="col-form-label">Code:</label>
+                          <input type="text" class="form-control" id="recipient-cod" name="code">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-con" class="col-form-label">Continent:</label>
+                          <input type="text" class="form-control" id="recipient-con" name="continent">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-nat" class="col-form-label">Nationality:</label>
+                          <input type="text" class="form-control" id="recipient-nat" name="nationality">
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
   <!-- javascripts -->
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
