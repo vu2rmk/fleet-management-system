@@ -24,4 +24,8 @@ public class CountryService {
     public Country findById(Integer id){
         return countryRepository.findById(id).get();
     }
+
+    public void delete(Integer id) {
+        countryRepository.deleteById(id);
+    }
 }
