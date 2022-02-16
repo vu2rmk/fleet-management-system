@@ -1,4 +1,4 @@
-package com.vu2rmk.fleetapp.controllers;
+package com.vu2rmk.fleetapp;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,5 +9,15 @@ public class ApplicationController {
     @GetMapping("/index")
     public String goHome(){
         return "index";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        return "Login";
     }
 }
